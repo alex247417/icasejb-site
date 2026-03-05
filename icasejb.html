@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICaseJB – Acessórios para Celulares e Eletrônicos</title>
+  <meta name="description" content="ICaseJB – Especializada em acessórios para celulares e equipamentos de telefonia e comunicação em José Bonifácio, SP." />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0f0f;
+      --paper: #f7f5f0;
+      --accent: #e63224;
+      --accent2: #ff6b00;
+      --mid: #5c5c5c;
+      --light: #e8e5df;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav { display: flex; gap: 2rem; }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #inicio {
+      min-height: 100vh;
+      background: var(--ink);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 64px 5vw 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #inicio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 50%, rgba(230,50,36,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 30% 20%, rgba(255,107,0,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-text { position: relative; z-index: 2; }
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(230,50,36,0.4);
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.6s 0.1s both;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.6s 0.2s both;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      color: #9a9a9a;
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 2.4rem;
+      animation: fadeUp 0.6s 0.3s both;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      animation: fadeUp 0.6s 0.4s both;
+    }
+
+    .hero-cta:hover { background: #c7281d; transform: translateY(-2px); }
+
+    .hero-cta svg { width: 16px; height: 16px; }
+
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeUp 0.8s 0.3s both;
+    }
+
+    .phone-mockup {
+      width: clamp(180px, 22vw, 300px);
+      position: relative;
+    }
+
+    .phone-body {
+      width: 100%;
+      aspect-ratio: 9/19;
+      background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%);
+      border-radius: 36px;
+      border: 2px solid #333;
+      position: relative;
+      box-shadow:
+        0 40px 80px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
+    .phone-body::before {
+      content: '';
+      position: absolute;
+      top: 14px; left: 50%;
+      transform: translateX(-50%);
+      width: 38%; height: 6px;
+      background: #111;
+      border-radius: 10px;
+      z-index: 2;
+    }
+
+    .phone-screen {
+      position: absolute;
+      inset: 6px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #1c1c2e, #2d1b30);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .phone-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(230,50,36,0.18), transparent 60%);
+    }
+
+    .phone-icon {
+      font-size: clamp(2rem, 4vw, 3rem);
+      position: relative; z-index: 1;
+    }
+
+    .phone-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--white);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      letter-spacing: 0.1em;
+      position: relative; z-index: 1;
+    }
+
+    .phone-brand span { color: var(--accent); }
+
+    .float-badge {
+      position: absolute;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(230,50,36,0.4);
+    }
+
+    .badge-1 { top: 15%; right: -12%; animation: float 3s ease-in-out infinite; }
+    .badge-2 { bottom: 22%; left: -15%; animation: float 3s 1.5s ease-in-out infinite; background: var(--accent2); }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--accent);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      padding: 1.8rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 25%; bottom: 25%;
+      width: 1px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 5vw; }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    /* ── SOBRE ── */
+    #sobre { background: var(--white); }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .sobre-text p {
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+
+    .sobre-text p:last-of-type { margin-bottom: 2rem; }
+
+    .sobre-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .highlight-card {
+      background: var(--paper);
+      border-left: 3px solid var(--accent);
+      padding: 1.4rem 1.6rem;
+      border-radius: 0 8px 8px 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .highlight-card:hover {
+      transform: translateX(6px);
+      box-shadow: -3px 0 0 var(--accent2), 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .highlight-card h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .highlight-card p {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── PRODUCTS SHOWCASE ── */
+    #produtos { background: var(--paper); }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--light);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .product-thumb {
+      background: var(--ink);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(230,50,36,0.15), transparent 70%);
+    }
+
+    .product-info { padding: 1.4rem; }
+
+    .product-info h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .product-info p {
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contato { background: var(--ink); color: var(--white); }
+
+    #contato .section-title { color: var(--white); }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contato-info p {
+      color: #888;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 42px; height: 42px;
+      background: rgba(230,50,36,0.15);
+      border: 1px solid rgba(230,50,36,0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text small {
+      display: block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .contact-item-text span {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .contato-map {
+      background: #1a1a1a;
+      border-radius: 12px;
+      border: 1px solid #2a2a2a;
+      overflow: hidden;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: #555;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .contato-map .map-pin { font-size: 2.5rem; }
+    .contato-map strong { color: #888; display: block; margin-bottom: 4px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .footer-legal {
+      background: #0f0f0f;
+      border-top: 3px solid var(--accent);
+      padding: 3rem 5vw;
+    }
+
+    .legal-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .legal-badge {
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 3px;
+    }
+
+    .legal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+
+    .legal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .legal-field {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+    }
+
+    .legal-field label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .legal-field span {
+      display: block;
+      font-size: 0.9rem;
+      color: #e0e0e0;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .legal-field.highlight-field {
+      border-color: rgba(230,50,36,0.4);
+      background: rgba(230,50,36,0.06);
+    }
+
+    .legal-field.highlight-field span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      padding: 1.6rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .footer-bottom p {
+      color: #444;
+      font-size: 0.75rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: #444;
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #inicio { grid-template-columns: 1fr; padding-top: 100px; padding-bottom: 4rem; text-align: center; }
+      .hero-sub { margin: 0 auto 2rem; }
+      .hero-cta { margin: 0 auto; }
+      .hero-visual { display: none; }
+      .sobre-grid, .contato-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { display: none; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); padding: 2rem 5vw; gap: 1.5rem; border-bottom: 3px solid var(--accent); }
+      nav.open { display: flex; }
+      .burger { display: flex; }
+      .stat-item:not(:last-child)::after { display: none; }
+      .stat-item { padding: 1.2rem 2rem; }
+      .products-header { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 600px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .legal-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">ICase<span>JB</span></div>
+    <nav id="nav">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre a Empresa</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <div class="hero-text">
+      <div class="hero-kicker">📱 Especialistas em tecnologia mobile</div>
+      <h1 class="hero-title">
+        Acessórios que<br/>
+        <em>protegem</em> e<br/>
+        conectam você
+      </h1>
+      <p class="hero-sub">
+        Há mais de 7 anos em José Bonifácio, a ICaseJB oferece os melhores acessórios para celulares e equipamentos de comunicação — com atendimento transparente e garantia de qualidade.
+      </p>
+      <a href="#contato" class="hero-cta">
+        Fale Conosco
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 8h8.586l-2.293-2.293 1.414-1.414L14.414 8l-3.707 3.707-1.414-1.414L11.586 9H3V8z"/></svg>
+      </a>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-mockup">
+        <div class="phone-body">
+          <div class="phone-screen">
+            <div class="phone-icon">📱</div>
+            <div class="phone-brand">ICase<span>JB</span></div>
+          </div>
+        </div>
+        <div class="float-badge badge-1">✓ Qualidade garantida</div>
+        <div class="float-badge badge-2">+ 7 anos de mercado</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-num">7+</span>
+      <span class="stat-label">Anos de mercado</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">1000+</span>
+      <span class="stat-label">Clientes atendidos</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">Comprometimento</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">CNPJ</span>
+      <span class="stat-label">Empresa regularizada</span>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="sobre-grid">
+      <div class="sobre-text reveal">
+        <span class="section-kicker">Quem somos</span>
+        <h2 class="section-title">Uma empresa<br/>feita com<br/>propósito</h2>
+        <p>
+          A <strong>ICaseJB</strong> nasceu do compromisso de levar acessórios de qualidade para celulares e equipamentos de telefonia e comunicação ao alcance de todos. Atuamos como Empresário Individual (ME) devidamente registrada no CNPJ sob o nº <strong>29.122.580/0001-71</strong>, com atividade principal no comércio varejista especializado de equipamentos de telefonia e comunicação.
+        </p>
+        <p>
+          Localizada em José Bonifácio – SP, nossa missão é simples: oferecer produtos com garantia real, atendimento honesto e uma experiência de compra transparente em cada detalhe. Acreditamos que tecnologia de qualidade deve ser acessível, e é isso que nos move todos os dias.
+        </p>
+        <p>
+          Cada produto que vendemos passa por critérios rigorosos de seleção. Trabalhamos apenas com itens que atendem aos padrões de desempenho e durabilidade que nossos clientes merecem — sem surpresas desagradáveis.
+        </p>
+      </div>
+      <div class="sobre-highlights reveal">
+        <div class="highlight-card">
+          <h4>🛡 Comprometimento com a qualidade</h4>
+          <p>Selecionamos cada produto com atenção aos detalhes. Só trabalhamos com itens que resistem ao uso cotidiano e entregam o que prometem.</p>
+        </div>
+        <div class="highlight-card">
+          <h4>🤝 Atendimento transparente</h4>
+          <p>Nosso relacionamento com o cliente é baseado em honestidade. Sem letras miúdas, sem promessas vazias — apenas respeito e clareza em cada interação.</p>
+        </div>
+        <div class="highlight-card">
+          <h4>📋 Empresa regularizada</h4>
+          <p>Atuamos com CNPJ ativo desde novembro de 2017, seguindo todas as obrigações fiscais e legais para garantir segurança total nas suas compras.</p>
+        </div>
+        <div class="highlight-card">
+          <h4>📍 Atendimento local e presencial</h4>
+          <p>Estamos fisicamente em José Bonifácio – SP, prontos para atender você de forma presencial com toda atenção que você merece.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUTOS -->
+  <section id="produtos">
+    <div class="products-header">
+      <div>
+        <span class="section-kicker">O que oferecemos</span>
+        <h2 class="section-title">Nossos<br/>produtos</h2>
+      </div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-thumb">📱</div>
+        <div class="product-info">
+          <h3>Capas & Cases</h3>
+          <p>Proteção com estilo para os principais modelos de celular. Capas protetoras, transparentes, carteiras e muito mais.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-thumb">🔌</div>
+        <div class="product-info">
+          <h3>Carregadores & Cabos</h3>
+          <p>Carregadores rápidos, cabos USB-C, Lightning e Micro-USB de alta durabilidade para garantir sua carga no dia a dia.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-thumb">🎧</div>
+        <div class="product-info">
+          <h3>Fones & Áudio</h3>
+          <p>Fones de ouvido com fio e sem fio, auriculares e acessórios de áudio para todas as necessidades.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-thumb">🔋</div>
+        <div class="product-info">
+          <h3>Baterias Portáteis</h3>
+          <p>Power banks de diferentes capacidades para manter sua bateria no nível, onde quer que você esteja.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-thumb">🖥</div>
+        <div class="product-info">
+          <h3>Películas Protetoras</h3>
+          <p>Películas de vidro temperado e películas anti-impacto para proteção total da tela do seu dispositivo.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-thumb">📡</div>
+        <div class="product-info">
+          <h3>Equipamentos de Comunicação</h3>
+          <p>Acessórios e equipamentos de telefonia e comunicação para uso residencial e profissional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="contato-grid">
+      <div>
+        <span class="section-kicker" style="color: var(--accent);">Fale com a gente</span>
+        <h2 class="section-title">Entre em<br/>contato</h2>
+        <div class="contato-info">
+          <p>Estamos disponíveis para atender suas dúvidas, pedidos e sugestões. Fale conosco pelo telefone, e-mail ou visite nossa loja em José Bonifácio – SP.</p>
+        </div>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-item-text">
+              <small>Telefone</small>
+              <span>(17) 3265-2328</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-item-text">
+              <small>E-mail</small>
+              <span>ANDOPE_JB@HOTMAIL.COM</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-text">
+              <small>Endereço</small>
+              <span>R JOAO VOLPE, 26 – Jd. Carlos Cassetari<br/>José Bonifácio – SP, CEP 15.200-000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contato-map">
+        <div class="map-pin">📍</div>
+        <strong>ICaseJB – Loja Física</strong>
+        R JOAO VOLPE, 26<br/>
+        Jd. Carlos Cassetari<br/>
+        José Bonifácio – SP<br/>
+        CEP 15.200-000
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-legal">
+      <div class="legal-header">
+        <div class="legal-badge">⚖️ Dados Oficiais</div>
+        <div class="legal-title">Informações Legais da Empresa</div>
+      </div>
+      <div class="legal-grid">
+        <div class="legal-field highlight-field">
+          <label>Razão Social</label>
+          <span>NATHAN MENDONCA ZANETI 46859503807</span>
+        </div>
+        <div class="legal-field highlight-field">
+          <label>CNPJ</label>
+          <span>29.122.580/0001-71</span>
+        </div>
+        <div class="legal-field">
+          <label>Endereço Completo</label>
+          <span>R JOAO VOLPE, 26 – JD. CARLOS CASSETARI<br/>JOSE BONIFACIO – SP – CEP 15.200-000</span>
+        </div>
+        <div class="legal-field">
+          <label>Telefone</label>
+          <span>(17) 3265-2328</span>
+        </div>
+        <div class="legal-field">
+          <label>E-mail</label>
+          <span>ANDOPE_JB@HOTMAIL.COM</span>
+        </div>
+        <div class="legal-field">
+          <label>Atividade Principal (CNAE)</label>
+          <span>47.52-1-00 – Comércio varejista especializado de equipamentos de telefonia e comunicação</span>
+        </div>
+        <div class="legal-field">
+          <label>Natureza Jurídica</label>
+          <span>213-5 – Empresário (Individual)</span>
+        </div>
+        <div class="legal-field">
+          <label>Situação Cadastral</label>
+          <span>✅ ATIVA – desde 22/11/2017</span>
+        </div>
+        <div class="legal-field">
+          <label>Porte da Empresa</label>
+          <span>ME – Microempresa</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">ICase<span>JB</span></div>
+      <p>© 2024 ICaseJB – Todos os direitos reservados.<br/>CNPJ 29.122.580/0001-71 – José Bonifácio, SP</p>
+      <p style="color:#333;">Comércio varejista especializado em equipamentos de telefonia e comunicação</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+    burger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    // Close nav on link click
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => nav.classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
